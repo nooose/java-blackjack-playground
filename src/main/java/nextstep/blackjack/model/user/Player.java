@@ -4,7 +4,7 @@ import nextstep.blackjack.model.card.Card;
 import nextstep.blackjack.model.card.Deck;
 import nextstep.blackjack.model.card.Hand;
 
-public class Player {
+public class Player extends User {
     private String name;
     private Hand hand;
 
