@@ -27,9 +27,21 @@ public class Lambda {
     }
 
     public static int sumAll(List<Integer> numbers) {
+//        int total = 0;
+//        for (int number : numbers) {
+//            total += number;
+//        }
+//        return total;
+        return numbers.stream().reduce(0, Integer::sum);
+
+    }
+
+    public static int sumAll(List<Integer> numbers, Conditional conditional) {
         int total = 0;
         for (int number : numbers) {
-            total += number;
+            if (conditional.isCondition(number)) {
+                total += number;
+            }
         }
         return total;
     }
