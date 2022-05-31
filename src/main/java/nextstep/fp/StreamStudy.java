@@ -21,7 +21,9 @@ public class StreamStudy {
 //            if (w.length() > 12) count++;
 //        }
 //        return count;
-        return words.stream().filter(w -> w.length() > 12).count();
+        return words.stream()
+                .filter(w -> w.length() > 12)
+                .count();
     }
 
     public static void printLongestWordTop100() throws IOException {
@@ -48,14 +50,20 @@ public class StreamStudy {
     }
 
     public static List<Integer> doubleNumbers(List<Integer> numbers) {
-        return numbers.stream().map(x -> 2 * x).collect(Collectors.toList());
+        return numbers.stream()
+                .map(x -> 2 * x)
+                .collect(Collectors.toList());
     }
 
     public static long sumAll(List<Integer> numbers) {
-        return numbers.stream().reduce(0, (x, y) -> x + y);
+        return numbers.stream()
+                .reduce(0, Integer::sum);
     }
 
     public static long sumOverThreeAndDouble(List<Integer> numbers) {
-        return numbers.stream().filter(n -> n > 3).map(n -> n * 2).reduce(0, Integer::sum);
+        return numbers.stream()
+                .filter(n -> n > 3)
+                .map(n -> n * 2)
+                .reduce(0, Integer::sum);
     }
 }
