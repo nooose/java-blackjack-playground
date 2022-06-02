@@ -1,14 +1,17 @@
-package nextstep.blackjack.model.card;
+package nextstep.blackjack.domain.card;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class Hand {
+public class Cards {
     private final List<Card> cards;
 
-    public Hand() {
+    public Cards() {
         this.cards = new ArrayList<>();
+    }
+
+    public Cards(List<Card> cards) {
+        this.cards = new ArrayList<>(cards);
     }
 
     public void add(Card card) {
@@ -19,5 +22,9 @@ public class Hand {
         return cards.stream()
                 .map(card -> card.getDenomination().getScore())
                 .reduce(0, Integer::sum);
+    }
+
+    public List<Card> getCards() {
+        return cards;
     }
 }

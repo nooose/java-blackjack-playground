@@ -1,4 +1,4 @@
-package nextstep.blackjack.model.card;
+package nextstep.blackjack.domain.card;
 
 public enum Denomination {
     ACE(1),
