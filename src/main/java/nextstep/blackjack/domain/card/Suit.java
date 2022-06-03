@@ -7,4 +7,8 @@ public enum Suit {
     Suit(String suit) {
         this.suit = suit;
     }
+
+    public String getSuit() {
+        return suit;
+    }
 }

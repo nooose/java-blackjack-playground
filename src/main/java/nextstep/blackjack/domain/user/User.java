@@ -2,8 +2,7 @@ package nextstep.blackjack.domain.user;
 
 import nextstep.blackjack.domain.card.Deck;
 import nextstep.blackjack.domain.card.Cards;
-import nextstep.blackjack.domain.state.State;
-import nextstep.blackjack.domain.state.Stay;
+import nextstep.blackjack.domain.state.*;
 
 public abstract class User {
     private final String name;
@@ -33,8 +32,13 @@ public abstract class User {
         this.bettingMoney = money;
     }
 
+
+    public boolean isCanDraw() {
+        return !state.isFinished();
+    }
+
     public void draw(Deck deck) {
-        state.draw(deck.draw());
+        state = state.draw(deck.draw());
     }
 
     public void draw(Deck deck, int drawNumber) {
@@ -45,5 +49,21 @@ public abstract class User {
 
     public int calculateScore() {
         return this.cards.calculateScore();
+    }
+
+    public String getState() {
+        if (state instanceof Bust) {
+            return "버스트";
+        }
+
+        if (state instanceof Hit) {
+            return "히트";
+        }
+
+        if (state instanceof Stay) {
+            return "스테이";
+        }
+
+        return "블랙잭";
     }
 }
